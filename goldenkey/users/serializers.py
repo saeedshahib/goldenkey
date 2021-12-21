@@ -5,14 +5,9 @@ from rest_auth.registration.serializers import RegisterSerializer
 #Serializer for CustomUser Model
 
 class CustomUserSerializer(serializers.ModelSerializer):
-	firstName = serializers.CharField(required = False)
-	lastName = serializers.CharField(required = False)
-	email = serializers.EmailField(required = False)
-	profilePhoto = serializers.ImageField(required = False)
-
 	class Meta:
 		model = CustomUser
-		fields = ['id', 'firstName','lastName','email','profilePhoto']
+		fields = ['id', 'cash','firstName','lastName','email','profilePhoto']
 
 
 
@@ -33,6 +28,7 @@ class MyCustomUserRegistrationSerializer(RegisterSerializer):
 			'firstName': self.validated_data.get('firstName', ''),
 			'lastName': self.validated_data.get('lastName', ''),
 			'profilePhoto' : self.validated_data.get('profilePhoto',''),
+			'cash' : self.validated_data.get('cash', ''),
 		}
 
 	def save(self, request):
@@ -41,5 +37,6 @@ class MyCustomUserRegistrationSerializer(RegisterSerializer):
 		user.lastName = self.data.get('lastName')
 		user.email = self.data.get('email')
 		user.profilePhoto = self.data.get('profilePhoto')
+		user.cash = self.data.get('cash')
 		user.save()
 		return user
