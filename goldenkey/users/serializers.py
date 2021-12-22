@@ -1,4 +1,6 @@
 from rest_framework import serializers
+
+from storeapp.models import Basket
 from .models import CustomUser
 from rest_auth.registration.serializers import RegisterSerializer
 
@@ -28,7 +30,6 @@ class MyCustomUserRegistrationSerializer(RegisterSerializer):
 			'firstName': self.validated_data.get('firstName', ''),
 			'lastName': self.validated_data.get('lastName', ''),
 			'profilePhoto' : self.validated_data.get('profilePhoto',''),
-			'cash' : self.validated_data.get('cash', ''),
 		}
 
 	def save(self, request):
@@ -37,6 +38,6 @@ class MyCustomUserRegistrationSerializer(RegisterSerializer):
 		user.lastName = self.data.get('lastName')
 		user.email = self.data.get('email')
 		user.profilePhoto = self.data.get('profilePhoto')
-		user.cash = self.data.get('cash')
 		user.save()
+		Basket.objects.get_or_create(user = user)
 		return user
