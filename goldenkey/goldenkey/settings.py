@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-jdwr*ksx7)%mw3rr5s(c^b!00r0lwruyf8o_x3imq5c-k0+s0=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1']
 
 
 # Application definition
@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'goldenkey.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'goldenkey',
-        'USER': 'goldenkeyuser',
+        'NAME': 'postgres',
+        'USER': 'postgres',
         'PASSWORD': 'goldenkey',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432'
     }
 }

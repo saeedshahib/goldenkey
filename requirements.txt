@@ -1,0 +1,12 @@
+Django==3.2.8
+django-allauth==0.45.0
+django-cors-headers==3.10.0
+django-polymorphic==3.0.0
+django-rest-auth==0.9.5
+djangorestframework==3.12.4
+Pillow==8.4.0
+psycopg2==2.9.1
+PyJWT==2.3.0
+python3-openid==3.2.0
+requests==2.26.0
+virtualenv==20.10.0
